@@ -9,7 +9,7 @@ WHERE
                         Localidad l
                         ON a.codigoPostal = l.codigoPostal
                        WHERE
-                        l.Localidad = 'La Plata')
+                        l.nombreL <> 'La Plata')
                       UNION  
                         (SELECT a.especie 
                       FROM 
@@ -18,5 +18,5 @@ WHERE
                         Localidad l
                         ON a.codigoPostal = l.codigoPostal
                     WHERE
-                        l.Localidad = 'La Plata')
+                        l.nombreL <> 'Salta')
                     
