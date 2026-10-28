@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8080/ -->
+<html lang="es" dir="ltr" class="ltr js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login - Adminer</title>
+<link rel="stylesheet" href="./Login - Adminer_files/saved_resource">
+<link rel="stylesheet" media="(prefers-color-scheme: dark)" href="./Login - Adminer_files/saved_resource(1)">
+<meta name="color-scheme" content="light dark">
+<script src="./Login - Adminer_files/saved_resource(2)" nonce=""></script>
+<link rel="icon" href="data:image/gif;base64,R0lGODlhEAAQAJEAAAQCBPz+/PwCBAROZCH5BAEAAAAALAAAAAAQABAAAAI2hI+pGO1rmghihiUdvUBnZ3XBQA7f05mOak1RWXrNq5nQWHMKvuoJ37BhVEEfYxQzHjWQ5qIAADs=">
+<link rel="apple-touch-icon" href="./Login - Adminer_files/saved_resource(3)">
+<link rel="manifest" href="http://localhost:8080/?manifest=" crossorigin="use-credentials">
+
+</head><body class=" adminer">
+<script nonce="">
+const offlineMessage = 'Usted no esta en linea.';
+const numberFormat = '# ##0';
+const numberDigits = '0123456789';
+const urlSeparators = '&';</script>
+<div id="help" class="jush-sql jsonly hidden" data-onmouseover="helpKeep()" data-onmouseout="helpMouseout()"></div>
+<div id="content">
+<span id="menuopen" class="jsonly" data-onclick="menuToggle()"><button title="Menú" class="icon icon-move" aria-expanded="false"></button></span>
+<h2>Login</h2>
+<div id="ajaxstatus" role="status" class="jsonly"></div>
+<script nonce="">if (navigator.serviceWorker) {
+	navigator.serviceWorker.register('?file=worker.js&version=6.1.2+30b83850', {scope: location.pathname}).catch(() => {});
+}</script>
+<form action="http://localhost:8080/" method="post">
+<div><input type="hidden" name="token" value="372672:581501">
+</div>
+<table class="layout">
+<tbody><tr><th>Motor de base de datos</th><td><select name="auth[driver]" data-onchange="loginDriver()"><option value="server" selected="">MySQL / MariaDB</option><option value="pgsql">PostgreSQL</option><option value="sqlite">SQLite</option><option value="mssql">MS SQL</option><option value="oracle">Oracle</option></select>
+</td></tr><tr><th>Servidor</th><td><input name="auth[server]" value="mysql" title="hostname[:port] o :socket" placeholder="localhost" autocapitalize="off">
+</td></tr><tr><th>Usuario</th><td><input name="auth[username]" id="username" autofocus="" value="" autocomplete="username" autocapitalize="off"><script nonce="">fire(qs('#username').form['auth[driver]'], 'change');</script>
+
+</td></tr><tr><th>Contraseña</th><td><input type="password" name="auth[password]" autocomplete="current-password">
+</td></tr><tr><th>Base de datos</th><td><input name="auth[db]" value="" autocapitalize="off">
+</td></tr></tbody></table>
+<p><input type="submit" value="Login" class="">
+<label><input type="checkbox" name="auth[permanent]" value="1" checked="">Guardar contraseña</label>
+</p></form>
+</div>
+
+<div id="foot" class="foot">
+<div id="menu">
+<h1><a href="https://www.adminer.org/" target="_blank" rel="noreferrer noopener" id="h1"><img src="./Login - Adminer_files/saved_resource(3)" width="24" height="24" alt="" id="logo">Adminer</a> <span class="version">6.1.2 <a href="https://www.adminer.org/#download" target="_blank" rel="noreferrer noopener" id="version">6.2.0</a></span></h1>
+<form action="http://localhost:8080/" method="post">
+<div id="lang"><label>Idioma: <select name="lang" data-onchange="formSubmit()"><option value="en">English</option><option value="id">Bahasa Indonesia</option><option value="ms">Bahasa Melayu</option><option value="bs">Bosanski</option><option value="ca">Català</option><option value="cs">Čeština</option><option value="da">Dansk</option><option value="de">Deutsch</option><option value="et">Eesti</option><option value="es" selected="">Español</option><option value="fr">Français</option><option value="gl">Galego</option><option value="hr">Hrvatski</option><option value="it">Italiano</option><option value="lv">Latviešu</option><option value="lt">Lietuvių</option><option value="ro">Limba Română</option><option value="hu">Magyar</option><option value="nl">Nederlands</option><option value="no">Norsk</option><option value="uz">Oʻzbekcha</option><option value="pl">Polski</option><option value="pt">Português</option><option value="pt-br">Português (Brazil)</option><option value="sk">Slovenčina</option><option value="sl">Slovenski</option><option value="fi">Suomi</option><option value="sv">Svenska</option><option value="vi">Tiếng Việt</option><option value="tr">Türkçe</option><option value="bg">Български</option><option value="el">Ελληνικά</option><option value="ru">Русский</option><option value="sr">Српски</option><option value="uk">Українська</option><option value="he">עברית</option><option value="ar">العربية</option><option value="fa">فارسی</option><option value="hi">हिन्दी</option><option value="bn">বাংলা</option><option value="ta">த‌மிழ்</option><option value="th">ภาษาไทย</option><option value="ka">ქართული</option><option value="ja">日本語</option><option value="zh">简体中文</option><option value="zh-tw">繁體中文</option><option value="ko">한국어</option></select></label> <input type="submit" value="Usar" class="hidden">
+<input type="hidden" name="token" value="88104:796821">
+</div>
+</form>
+<ul id="logins" data-onmouseover="menuOver()" data-onmouseout="menuOut()">
+<li><a href="http://localhost:8080/?server=mysql&amp;username=alumno">(MySQL) alumno@mysql</a>
+</li></ul>
+</div>
+</div>
+
+<script nonce="">setupSubmitHighlight(document);</script>
+</body></html>
