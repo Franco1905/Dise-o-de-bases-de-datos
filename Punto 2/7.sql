@@ -9,14 +9,32 @@ WHERE
                         Localidad l
                         ON a.codigoPostal = l.codigoPostal
                        WHERE
-                        l.nombreL <> 'La Plata')
+                        a.nroArbol NOT IN (
+                          SELECT nroArbol
+                          FROM
+                            Arbol a
+                          INNER JOIN
+                            Localidad l
+                            ON a.codigoPostal = l.codigoPostal
+                          WHERE
+                            l.nombreL = 'La Plata'
+                        )
+                      )
                       UNION  
-                        (SELECT a.especie 
+                      (SELECT a.especie 
                       FROM 
-                        Arbol a
+                          Arbol a
                       INNER JOIN
                         Localidad l
                         ON a.codigoPostal = l.codigoPostal
-                    WHERE
-                        l.nombreL <> 'Salta')
-                    
+                      WHERE
+                        a.nroArbol NOT IN (
+                          SELECT nroArbol
+                          FROM
+                            Arbol a
+                          INNER JOIN
+                            Localidad l
+                            ON a.codigoPostal = l.codigoPostal
+                          WHERE
+                            l.nombreL = 'Salta')
+                      )  
