@@ -11,4 +11,4 @@ WHERE
                         GROUP BY
                             l.codigoPostal
                         HAVING
-                            COUNT(*) < 5)
+                            COUNT(*) < 5) 
