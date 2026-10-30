@@ -1,62 +1,31 @@
-SELECT 
+SELECT
     i.DNI,
     i.nombre,
     i.apellido,
-    i.mail
+    i.email
 FROM
     Integrante i
-NATURAL JOIN
-    Banda b
+    INNER JOIN Banda b ON b.codigoB = i.codigoB
 WHERE
-    b.codigoB NOT IN (
-        SELECT
-            /*
-            debo seleccionar los id de todas las bandas que NO estuvieron en
-            el escenario 'Gustavo Cerati'
-            */ 
-             b.codigoB
-        FROM
-            Banda b
-        WHERE
-            b.codigoB NOT IN(
-                SELECT 
-                    b.codigoBanda
-                FROM
-                    Banda b
-                NATURAL JOIN
-                    Recital r
-                NATURAL JOIN
-                    Escenario e
-                WHERE
-                    e.nombre_escenario = 'Gustavo Cerati'
-                )
-        UNION 
-        (SELECT
-            /*
-            debo seleccionar los id de todas las bandas que NO estuvieron en
-            el escenario 'Carlos Gardel'
-            */ 
-             b.codigoB
-        FROM
-            Banda b
-        WHERE
-            b.codigoB NOT IN(
-                SELECT 
-                    b.codigoBanda
-                FROM
-                    Banda b
-                NATURAL JOIN
-                    Recital r
-                NATURAL JOIN
-                    Escenario e
-                WHERE
-                    e.nombre_escenario = 'Carlos Gardel'
-                )
-        )  
+    b.codigoB IN (
+        (
+            SELECT
+                b.codigoB
+            FROM
+                Banda b
+                INNER JOIN Recital r ON r.codigoB = b.codigoB
+                INNER JOIN Escenario e ON e.nroEscenario = r.nroEscenario
+            WHERE
+                e.nombre_escenario = 'Gustavo Cerati'
+        )
     )
-
-/* la union de todos los codigos de las bandas que nunca tocaron en el escenario
-gustavo cerati con todas las bandas que nunca tocaron en el escenario carlos
-gardel. juntos, serian los codigos de todas las bandas que jamas tocaron en 
-ninguno de ellos. en teoria, y siguiendo la teoria de conjuntos, estariamos 
-aplicando ley de demorgan, ya que: A.B = -(-(A.B)) = -((-A)+(-B))/*
+    AND b.codigoB IN(
+        SELECT
+            b.codigoB
+        FROM
+            Banda b NATURAL
+            JOIN Recital r NATURAL
+            JOIN Escenario e
+        WHERE
+            e.nombre_escenario = 'Carlos Gardel'
+    )
