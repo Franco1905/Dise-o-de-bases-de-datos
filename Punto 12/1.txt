@@ -1,0 +1,62 @@
+Barberia = (codBarberia, razon_social, direccion, telefono)
+Cliente = (nroCliente, DNI, nombYAp, direccionC, fechaNacimiento, celular)
+Barbero = (codEmpleado, DNIB, nombYApB, direccionB, telefonoContacto, mail)
+Atencion = (codEmpleado(fk), fecha, hora, codBarberia(fk), nroCliente(fk),descTratamiento, valor)
+
+Inciso 12.1: 
+Rta: A
+    la subconsulta de la opcion a, me retorna todas las tuplas en las que
+el cliente que se esta procesando actualmente coincide con el año 2024.
+    y, la clausula NOT EXISTS retorna true si no existe ninguna tupla en la 
+que el cliente recibio atencion en 2024. En teoria, esto se ve correcto, 
+parece devolver lo que debe. Sin embargo, creo que deberia haber una clausula
+DISTINCT, ya que puede pasar que un mismo cliente haya sido atendido mas de 
+una vez en un mismo año. Asi que, por ese motivo, se puede considerar incorrecto.
+    la opcion b, es incorrecta, ya que devuelve todas las tuplas en las que
+el cliente fue atendido en algun año distinto de 2024, el problema es que el
+cliente podria llegar a haber sido atendido en 2024, y esa tupla se deshecha,
+pero no el cliente en cuestion.
+    La opcion c, hace lo opuesto a lo que se pide y mal. la subconsulta
+retorna todas las tuplas de atenciones que se dieron durante 2024 (cuando el 
+enunciado pide explicitamente que se requieren los clientes que no fueron
+atendidos en 2024)
+    La opcion d, tiene el mismo problema que la opcion c, el WHERE esta mal, ya
+que evalua que la fecha sea mayor igual a '2024-01-01' (despues del primero de
+enero de 2024) y menor que '2025-01-01' (antes que el primero de enero de 2025)
+    Por ahora, parece que la opcion A es la mas cercana a ser correcta.
+-------------------------------------------------------------------------
+Inciso 12.2:
+Rta: B,C,D
+    La opcion a se ve bien, aunque no se si haria falta el DISTINCT. aver,
+por cada barberia tenemos varias atenciones, y por cada atencion tenemos un
+cliente, asi que, puede pasar que el cliente que tiene el DNI pedido, se
+haya atendido mas de una vez en la misma barberia, por ende, el DISTINCT
+es necesario.
+    La opcion b agrega el DINSTINCT, y mantiene el resto igual que la opcion
+a. diria que es una de las opciones correctas, no le veo falla alguna.
+    La opcion c, tambien es bastante solida, aplica la misma logica que las
+opciones anteriores y tiene el DISTINCT. con la diferencia de que usa un
+producto cartesiano en lugar de natural. lo cual, no influye en el resultado
+final, por ende tambien es correcta.
+    La opcion d, es algo peculiar, ya que decide resolver el problema a
+travez de una subconsulta. la subconsulta retorna los codigos de las barberias
+que tienen al menos una atencion con el cliente con el DNI pedido. y la
+consulta principal evalua si cada codigo de barberia esta en la tabla resultante
+de la subconsulta. en mi opinion, el resultado es el mismo, y se ahorra el uso
+del distinct, ya que la consulta final solo filtra las barberias que cumplen
+con tener al cliente en cuestion.
+---------------------------------------------------------------------------
+Inciso 12.3:
+Rta: A,C,
+    La opcion a es curiosa, creo que es incorrecta debido a que la funcion de
+agregacion deberia estar sola en el SELECT. pero, creo que al haber un GROUP
+BY, se establece una exepcion, siempre y cuando los atributos que esten 
+en el GROUP BY esten tambien en el SELECT. creo que por eso el GROUP BY tiene 
+mas de un atributo, para compensar la proyeccion. parece correcto.
+    La opcion B es incorrecta, ya que me da tuplas en las que los barberos
+pudieron no haber realizado atenciones ya que usa un LEFT JOIN.
+    La opcion c, es similar a la b, con la crucial diferencia que cuenta 
+los numeros de cliente de las atenciones. yo diria que es correcta, ya que
+en caso de que algun nroCliente sea null, simplemente no lo cuenta, y ademas
+agrupa todo por los valores pedidos.
+    
